@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+    <ItemGroup>
+        <Filter Include="header">
+            <UniqueIdentifier>{95E091E4-743F-4918-8A54-8F34ECEE8597}</UniqueIdentifier>
+            <Extensions>h;hpp</Extensions>
+        </Filter>
+        <Filter Include="resource">
+            <UniqueIdentifier>{FF23D0BB-301A-43EB-A442-BFC228556B08}</UniqueIdentifier>
+            <Extensions>hlsl;jpg;jpeg;png;wav;mp3;ico;dds;rc;obj</Extensions>
+        </Filter>
+        <Filter Include="source">
+            <UniqueIdentifier>{4D75E59F-1084-4D7E-BA74-2E03C23460EE}</UniqueIdentifier>
+            <Extensions>cpp;c</Extensions>
+        </Filter>
+    </ItemGroup>
+    <ItemGroup>
+        <ClCompile Include="..\..\..\src\PVZ\main.cpp">
+            <Filter>source</Filter>
+        </ClCompile>
+        <ClCompile Include="..\..\..\src\PVZ\pch.cpp">
+            <Filter>source</Filter>
+        </ClCompile>
+        <ClInclude Include="..\..\..\src\PVZ\main.h">
+            <Filter>header</Filter>
+        </ClInclude>
+        <ClInclude Include="..\..\..\src\PVZ\pch.h">
+            <Filter>header</Filter>
+        </ClInclude>
+        <ClInclude Include="..\..\..\src\PVZ\resource.h">
+            <Filter>header</Filter>
+        </ClInclude>
+        <None Include="..\..\..\src\PVZ\app.ico">
+            <Filter>resource</Filter>
+        </None>
+        <None Include="..\..\..\src\PVZ\app.rc">
+            <Filter>resource</Filter>
+        </None>
+        <None Include="..\..\..\src\PVZ\small.ico">
+            <Filter>resource</Filter>
+        </None>
+    </ItemGroup>
+</Project>

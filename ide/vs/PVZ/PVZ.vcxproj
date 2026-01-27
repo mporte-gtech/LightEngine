@@ -13,8 +13,8 @@
     <PropertyGroup Label="Globals">
         <VCProjectVersion>17.0</VCProjectVersion>
         <Keyword>Win32Proj</Keyword>
-        <ProjectGuid>{7CE365AE-8967-4C19-9560-AFE64B8174EB}</ProjectGuid>
-        <RootNamespace>Sample</RootNamespace>
+        <ProjectGuid>{1C5C8DA2-92FB-40CD-B5DA-0C243C61D5D9}</ProjectGuid>
+        <RootNamespace>PVZ</RootNamespace>
         <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
     </PropertyGroup>
     <PropertyGroup Label="Vcpkg">
@@ -94,15 +94,22 @@
         </Link>
     </ItemDefinitionGroup>
     <ItemGroup>
-        <ClCompile Include="..\..\..\src\Sample\DummyEntity.cpp"/>
-        <ClCompile Include="..\..\..\src\Sample\main.cpp"/>
-        <ClCompile Include="..\..\..\src\Sample\SampleScene.cpp"/>
+        <ClCompile Include="..\..\..\src\PVZ\main.cpp"/>
+        <ClCompile Include="..\..\..\src\PVZ\pch.cpp">
+            <PrecompiledHeader Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">Create</PrecompiledHeader>
+            <PrecompiledHeader Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">Create</PrecompiledHeader>
+        </ClCompile>
     </ItemGroup>
     <ItemGroup>
-        <ClInclude Include="..\..\..\src\Sample\DummyEntity.h"/>
-        <ClInclude Include="..\..\..\src\Sample\SampleScene.h"/>
+        <ClInclude Include="..\..\..\src\PVZ\main.h"/>
+        <ClInclude Include="..\..\..\src\PVZ\pch.h"/>
+        <ClInclude Include="..\..\..\src\PVZ\resource.h"/>
     </ItemGroup>
-    <ItemGroup/>
+    <ItemGroup>
+        <None Include="..\..\..\src\PVZ\app.ico"/>
+        <None Include="..\..\..\src\PVZ\app.rc"/>
+        <None Include="..\..\..\src\PVZ\small.ico"/>
+    </ItemGroup>
     <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets"/>
     <ImportGroup Label="ExtensionTargets"/>
 </Project>
