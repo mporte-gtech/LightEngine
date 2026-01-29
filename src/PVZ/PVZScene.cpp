@@ -6,6 +6,7 @@
 
 #include "Debug.h"
 #include <iostream>
+#include <vector>
 
 void SampleScene::OnInitialize()
 {
@@ -17,7 +18,9 @@ void SampleScene::OnInitialize()
 
 		temp->SetPosition(temp->GetRadius() + 10, i * (GetWindowHeight() / rowsAmount) + (GetWindowHeight() / (rowsAmount * 2)));
 
-		plants.push_back(temp);
+		plants.push_back(std::vector<Plant*>());
+
+		plants[i].push_back(temp);
 	}
 
 	selectedPlant = nullptr;
@@ -30,23 +33,35 @@ void SampleScene::OnEvent(const sf::Event& event)
 
 	if (event.mouseButton.button == sf::Mouse::Button::Right)
 	{
-		Zombie* temp = CreateEntity<Zombie>(50, sf::Color::Red);
+		for (int i = 1; i <= rowsAmount; i++)
+		{
+			float laneHeight = GetWindowHeight() / rowsAmount;
 
-		temp->SetPosition(event.mouseButton.x, event.mouseButton.y);
-		temp->SetSpeed(50);
+			if (event.mouseButton.y < laneHeight * i)
+			{
+				Zombie* temp = CreateEntity<Zombie>(50, sf::Color::Red);
+				temp->SetPosition(event.mouseButton.x, laneHeight * i - laneHeight / 2);
+				temp->SetSpeed(50);
+
+				break;
+			}
+		}
 	}
 
 	if (event.mouseButton.button == sf::Mouse::Button::Left)
 	{
-		for (Plant* plant : plants)
+		for (std::vector<Plant*> plantVector : plants)
 		{
-			TrySetSelectedPlant(plant, event.mouseButton.x, event.mouseButton.y);
+			for (Plant* plant : plantVector)
+			{
+				TrySetSelectedPlant(plant, event.mouseButton.x, event.mouseButton.y);
+			}
 		}
 	}
 
 	if (selectedPlant != nullptr && event.key.code == sf::Keyboard::Space)
 	{
-		std::cout << "AAA" << std::endl;
+		selectedPlant->ShootSuper();
 	}
 }
 

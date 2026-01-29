@@ -3,14 +3,16 @@
 #include "Scene.h"
 #include "Entity.h"
 #include "Plant.h"
+#include "Zombie.h"
 
 class DummyEntity;
 
 class SampleScene : public Scene
 {
-	std::vector<Plant*> plants;
-
+	std::vector<std::vector<Plant*>> plants;
 	Plant* selectedPlant;
+
+	std::vector<std::vector<Zombie*>> zones;
 
 	int rowsAmount;
 

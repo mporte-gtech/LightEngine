@@ -9,7 +9,7 @@ Zombie::Zombie(float maxHp, float hp, int speed) :
 
 void Zombie::OnUpdate()
 {
-	GoToDirection(-1, GetPosition().y, mSpeed);
+	GoToDirection(GetPosition().x - mSpeed, GetPosition().y, mSpeed);
 }
 
 void Zombie::TakeDamage(float amount)
