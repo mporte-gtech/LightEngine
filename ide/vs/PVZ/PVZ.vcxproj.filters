@@ -2,15 +2,15 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
     <ItemGroup>
         <Filter Include="header">
-            <UniqueIdentifier>{95E091E4-743F-4918-8A54-8F34ECEE8597}</UniqueIdentifier>
+            <UniqueIdentifier>{26A17F9B-B42C-497A-AB3F-0BD3001E7E50}</UniqueIdentifier>
             <Extensions>h;hpp</Extensions>
         </Filter>
         <Filter Include="resource">
-            <UniqueIdentifier>{FF23D0BB-301A-43EB-A442-BFC228556B08}</UniqueIdentifier>
+            <UniqueIdentifier>{D7F57694-A06B-4757-873F-0E353CAE6083}</UniqueIdentifier>
             <Extensions>hlsl;jpg;jpeg;png;wav;mp3;ico;dds;rc;obj</Extensions>
         </Filter>
         <Filter Include="source">
-            <UniqueIdentifier>{4D75E59F-1084-4D7E-BA74-2E03C23460EE}</UniqueIdentifier>
+            <UniqueIdentifier>{31D56F3B-4CEF-4720-B1AF-D9EFDC6E9AE6}</UniqueIdentifier>
             <Extensions>cpp;c</Extensions>
         </Filter>
     </ItemGroup>
@@ -21,13 +21,67 @@
         <ClCompile Include="..\..\..\src\PVZ\pch.cpp">
             <Filter>source</Filter>
         </ClCompile>
+        <ClCompile Include="..\..\..\src\PVZ\Plant.cpp">
+            <Filter>source</Filter>
+        </ClCompile>
+        <ClCompile Include="..\..\..\src\PVZ\Projectile.cpp">
+            <Filter>source</Filter>
+        </ClCompile>
+        <ClCompile Include="..\..\..\src\PVZ\PVZScene.cpp">
+            <Filter>source</Filter>
+        </ClCompile>
+        <ClCompile Include="..\..\..\src\PVZ\StateBase.cpp">
+            <Filter>source</Filter>
+        </ClCompile>
+        <ClCompile Include="..\..\..\src\PVZ\StateIdlePlant.cpp">
+            <Filter>source</Filter>
+        </ClCompile>
+        <ClCompile Include="..\..\..\src\PVZ\StateMachine.cpp">
+            <Filter>source</Filter>
+        </ClCompile>
+        <ClCompile Include="..\..\..\src\PVZ\StateReloadingPlant.cpp">
+            <Filter>source</Filter>
+        </ClCompile>
+        <ClCompile Include="..\..\..\src\PVZ\StateShootingPlant.cpp">
+            <Filter>source</Filter>
+        </ClCompile>
+        <ClCompile Include="..\..\..\src\PVZ\Zombie.cpp">
+            <Filter>source</Filter>
+        </ClCompile>
         <ClInclude Include="..\..\..\src\PVZ\main.h">
             <Filter>header</Filter>
         </ClInclude>
         <ClInclude Include="..\..\..\src\PVZ\pch.h">
             <Filter>header</Filter>
         </ClInclude>
+        <ClInclude Include="..\..\..\src\PVZ\Plant.h">
+            <Filter>header</Filter>
+        </ClInclude>
+        <ClInclude Include="..\..\..\src\PVZ\Projectile.h">
+            <Filter>header</Filter>
+        </ClInclude>
+        <ClInclude Include="..\..\..\src\PVZ\PVZScene.h">
+            <Filter>header</Filter>
+        </ClInclude>
         <ClInclude Include="..\..\..\src\PVZ\resource.h">
+            <Filter>header</Filter>
+        </ClInclude>
+        <ClInclude Include="..\..\..\src\PVZ\StateBase.h">
+            <Filter>header</Filter>
+        </ClInclude>
+        <ClInclude Include="..\..\..\src\PVZ\StateIdlePlant.h">
+            <Filter>header</Filter>
+        </ClInclude>
+        <ClInclude Include="..\..\..\src\PVZ\StateMachine.h">
+            <Filter>header</Filter>
+        </ClInclude>
+        <ClInclude Include="..\..\..\src\PVZ\StateReloadingPlant.h">
+            <Filter>header</Filter>
+        </ClInclude>
+        <ClInclude Include="..\..\..\src\PVZ\StateShootingPlant.h">
+            <Filter>header</Filter>
+        </ClInclude>
+        <ClInclude Include="..\..\..\src\PVZ\Zombie.h">
             <Filter>header</Filter>
         </ClInclude>
         <None Include="..\..\..\src\PVZ\app.ico">
