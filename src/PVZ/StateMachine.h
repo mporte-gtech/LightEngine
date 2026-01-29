@@ -18,20 +18,20 @@ public:
         states.push_back(state);
     }
 
-    void TryChangeState(T* selfPointer, int newState)
+    void TryChangeState(T* classPointer, int newState)
     {
-        if (states[currentState]->CanTransitionFrom(selfPointer, currentState) != true)
+        if (states[currentState]->CanTransitionFrom(classPointer, currentState) != true)
             return;
 
-        states[currentState]->End(selfPointer);
+        states[currentState]->End(classPointer);
 
         currentState = newState;
 
-        states[currentState]->Start(selfPointer);
+        states[currentState]->Start(classPointer);
     }
 
-    void Update(T* selfPointer, float deltaTime)
+    void Update(T* classPointer, float deltaTime)
     {
-        states[currentState]->Update(selfPointer, deltaTime);
+        states[currentState]->Update(classPointer, deltaTime);
     }
 };
