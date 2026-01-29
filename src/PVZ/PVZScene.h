@@ -7,13 +7,12 @@
 
 class DummyEntity;
 
-class SampleScene : public Scene
+class PVZScene : public Scene
 {
-	std::vector<std::vector<Plant*>> plants;
+	std::vector<Plant*> plants;
 	Plant* selectedPlant;
 
-	std::vector<std::vector<Zombie*>> zones;
-
+	std::vector<std::vector<Zombie*>> rows;
 	int rowsAmount;
 
 private:
@@ -23,4 +22,9 @@ public:
 	void OnInitialize() override;
 	void OnEvent(const sf::Event& event) override;
 	void OnUpdate() override;
+
+	bool AreZombiesInRow(int rowNumber);
+
+	void RemovePlant(Plant* plantToRemove);
+	void RemoveZombie(Zombie* zombieToRemove);
 };

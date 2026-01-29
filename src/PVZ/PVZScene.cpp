@@ -8,7 +8,7 @@
 #include <iostream>
 #include <vector>
 
-void SampleScene::OnInitialize()
+void PVZScene::OnInitialize()
 {
 	rowsAmount = 3;
 
@@ -17,16 +17,16 @@ void SampleScene::OnInitialize()
 		Plant* temp = CreateEntity<Plant>(50, sf::Color::Green);
 
 		temp->SetPosition(temp->GetRadius() + 10, i * (GetWindowHeight() / rowsAmount) + (GetWindowHeight() / (rowsAmount * 2)));
+		temp->SetRowNumber(i);
 
-		plants.push_back(std::vector<Plant*>());
-
-		plants[i].push_back(temp);
+		plants.push_back(temp);
+		rows.push_back(std::vector<Zombie*>());
 	}
 
 	selectedPlant = nullptr;
 }
 
-void SampleScene::OnEvent(const sf::Event& event)
+void PVZScene::OnEvent(const sf::Event& event)
 {
 	if (event.type != sf::Event::EventType::MouseButtonPressed && event.type != sf::Event::EventType::KeyPressed)
 		return;
@@ -43,6 +43,8 @@ void SampleScene::OnEvent(const sf::Event& event)
 				temp->SetPosition(event.mouseButton.x, laneHeight * i - laneHeight / 2);
 				temp->SetSpeed(50);
 
+				rows[i - 1].push_back(temp);
+
 				break;
 			}
 		}
@@ -50,12 +52,9 @@ void SampleScene::OnEvent(const sf::Event& event)
 
 	if (event.mouseButton.button == sf::Mouse::Button::Left)
 	{
-		for (std::vector<Plant*> plantVector : plants)
+		for (Plant* plant : plants)
 		{
-			for (Plant* plant : plantVector)
-			{
-				TrySetSelectedPlant(plant, event.mouseButton.x, event.mouseButton.y);
-			}
+			TrySetSelectedPlant(plant, event.mouseButton.x, event.mouseButton.y);
 		}
 	}
 
@@ -65,7 +64,7 @@ void SampleScene::OnEvent(const sf::Event& event)
 	}
 }
 
-void SampleScene::TrySetSelectedPlant(Plant* plant, int x, int y)
+void PVZScene::TrySetSelectedPlant(Plant* plant, int x, int y)
 {
 	if (plant->IsInside(x, y) == false)
 		return;
@@ -73,11 +72,39 @@ void SampleScene::TrySetSelectedPlant(Plant* plant, int x, int y)
 	selectedPlant = plant;
 }
 
-void SampleScene::OnUpdate()
+void PVZScene::OnUpdate()
 {
 	if (selectedPlant != nullptr)
 	{
 		sf::Vector2f position = selectedPlant->GetPosition();
 		Debug::DrawCircle(position.x, position.y, 10, sf::Color::Blue);
+	}
+}
+
+bool PVZScene::AreZombiesInRow(int rowNumber)
+{
+	if (rowNumber < 0 || rows.size() < rowNumber + 1)
+		return false;
+
+	return rows[rowNumber].size() > 0;
+}
+
+void PVZScene::RemovePlant(Plant* plantToRemove)
+{
+	for (Plant* plant : plants)
+	{
+		if (plant == plantToRemove)
+		{
+			plants.push_back(plantToRemove);
+			plant->~Plant();
+		}
+	}
+}
+
+void PVZScene::RemoveZombie(Zombie* zombieToRemove)
+{
+	for (std::vector<Zombie*>& zombieVector : rows)
+	{
+		zombieVector.erase(std::remove(zombieVector.begin(), zombieVector.end(), zombieToRemove), zombieVector.end());
 	}
 }

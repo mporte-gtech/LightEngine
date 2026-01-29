@@ -7,6 +7,7 @@ private:
 	float maxHp, hp;
 public:
 	Zombie(float maxHp = 10, float hp = 10, int speed = 50.f);
+	~Zombie();
 
 	void OnUpdate() override;
 

@@ -14,7 +14,12 @@ void StateShootingPlant::Start(Plant* classPointer)
 
 void StateShootingPlant::Update(Plant* classPointer, float deltaTime)
 {
-	cooldown -= deltaTime;
+	cooldown = fmax(0, cooldown - deltaTime);
+
+	if (cooldown <= 0)
+	{
+		classPointer->stateMachine->TryChangeState(classPointer, (int)Plant::States::Idle);
+	}
 }
 
 void StateShootingPlant::End(Plant* classPointer)

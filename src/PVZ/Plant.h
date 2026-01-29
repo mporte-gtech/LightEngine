@@ -22,11 +22,15 @@ protected:
 private:
 	int magazineSize, ammos;
 
+	int rowNumber;
+
 	float empoweredShot, empoweredShotReload;
 
 	StateMachine<Plant>* stateMachine;
+
 public:
-	Plant(int magazineSize = 5, int ammos = 5, float empoweredShot = 30.f, float empoweredShotReload = 0.f);
+	Plant(int row = 0, int magazineSize = 5, int ammos = 5, float empoweredShot = 30.f, float empoweredShotReload = 0.f);
+	~Plant();
 
 	void SetMagazineSize(int size);
 
@@ -35,6 +39,9 @@ public:
 	void Shoot();
 
 	void ShootSuper();
+
+	void SetRowNumber(int newRow);
+	int GetRowNumber();
 
 	void OnUpdate() override;
 };

@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+#include <iostream>
 
 template<typename T>
 class StateBase;
@@ -20,7 +21,10 @@ public:
 
     void TryChangeState(T* classPointer, int newState)
     {
-        if (states[currentState]->CanTransitionFrom(classPointer, currentState) != true)
+        if (states[currentState] == nullptr)
+            return;
+
+        if (states[newState]->CanTransitionFrom(classPointer, currentState) != true)
             return;
 
         states[currentState]->End(classPointer);
@@ -32,6 +36,9 @@ public:
 
     void Update(T* classPointer, float deltaTime)
     {
+        if (states[currentState] == nullptr)
+            return;
+
         states[currentState]->Update(classPointer, deltaTime);
     }
 };

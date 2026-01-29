@@ -8,6 +8,12 @@ void StateReloadingPlant::Start(Plant* classPointer)
 
 void StateReloadingPlant::Update(Plant* classPointer, float deltaTime)
 {
+	cooldown = fmax(0, cooldown - deltaTime);
+
+	if (cooldown <= 0)
+	{
+		classPointer->stateMachine->TryChangeState(classPointer, (int)Plant::States::Idle);
+	}
 }
 
 void StateReloadingPlant::End(Plant* classPointer)
