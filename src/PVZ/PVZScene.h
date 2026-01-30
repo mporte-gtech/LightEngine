@@ -26,5 +26,6 @@ public:
 	bool AreZombiesInRow(int rowNumber);
 
 	void RemovePlant(Plant* plantToRemove);
+	void SpawnZombie(int rowNumber);
 	void RemoveZombie(Zombie* zombieToRemove);
 };

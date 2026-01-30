@@ -23,14 +23,29 @@ Plant::~Plant()
 	Destroy();
 }
 
+int Plant::GetMagazineSize()
+{
+	return magazineSize;
+}
+
 void Plant::SetMagazineSize(int size)
 {
 	magazineSize = size;
 }
 
+int Plant::GetAmmos()
+{
+	return ammos;
+}
+
 void Plant::SetAmmos(int amount)
 {
 	ammos = amount;
+}
+
+std::string Plant::GetStateName()
+{
+	return stateMachine->GetCurrentStateName();
 }
 
 void Plant::Shoot()

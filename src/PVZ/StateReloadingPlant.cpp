@@ -1,6 +1,11 @@
 #include "StateReloadingPlant.h"
 #include "Plant.h"
 
+std::string StateReloadingPlant::GetStateName()
+{
+	return "Reloading";
+}
+
 void StateReloadingPlant::Start(Plant* classPointer)
 {
 	cooldown = 2.5f;

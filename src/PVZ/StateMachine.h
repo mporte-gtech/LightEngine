@@ -14,6 +14,14 @@ private:
     int currentState;
 
 public:
+    std::string GetCurrentStateName()
+    {
+        if (states[currentState] == nullptr)
+            return " ";
+
+        return states[currentState]->GetStateName();
+    }
+
     void AddState(StateBase<T>* state)
     {
         states.push_back(state);

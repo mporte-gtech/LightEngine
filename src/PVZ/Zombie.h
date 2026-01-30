@@ -12,4 +12,6 @@ public:
 	void OnUpdate() override;
 
 	void TakeDamage(float amount);
+
+	void RemoveZombie();
 };

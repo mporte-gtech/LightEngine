@@ -2,6 +2,11 @@
 #include "Plant.h"
 #include "Projectile.h"
 
+std::string StateShootingPlant::GetStateName()
+{
+	return "Shooting";
+}
+
 void StateShootingPlant::Start(Plant* classPointer)
 {
 	Projectile* temp = classPointer->GetScene()->CreateEntity<Projectile>(5, sf::Color::White);

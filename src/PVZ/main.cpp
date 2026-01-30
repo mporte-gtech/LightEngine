@@ -14,6 +14,14 @@ int main()
 {
 	GameManager* pInstance = GameManager::Get();
 
+	std::cout << pInstance->GetFont().getInfo().family << std::endl;
+
+	//sf::Font font;
+	//if (!font.openFromFile("arial.ttf"))
+	//{
+		// error...
+	//}
+
 	pInstance->CreateWindow(1280, 720, "Scène test", 60, sf::Color::Black);
 
 	pInstance->LaunchScene<PVZScene>();

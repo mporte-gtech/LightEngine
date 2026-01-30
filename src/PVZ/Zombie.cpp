@@ -16,6 +16,11 @@ Zombie::~Zombie()
 void Zombie::OnUpdate()
 {
 	GoToDirection(GetPosition().x - mSpeed, GetPosition().y, mSpeed);
+
+	if (GetPosition().x <= 0 - GetRadius())
+	{
+		RemoveZombie();
+	}
 }
 
 void Zombie::TakeDamage(float amount)
@@ -24,9 +29,14 @@ void Zombie::TakeDamage(float amount)
 
 	if (hp <= 0)
 	{
-		PVZScene* scene;
-		if ((scene = dynamic_cast<PVZScene*>(GetScene())) != nullptr)
-			scene->RemoveZombie(this);
-		Destroy();
+		RemoveZombie();
 	}
+}
+
+void Zombie::RemoveZombie()
+{
+	PVZScene* scene;
+	if ((scene = dynamic_cast<PVZScene*>(GetScene())) != nullptr)
+		scene->RemoveZombie(this);
+	Destroy();
 }

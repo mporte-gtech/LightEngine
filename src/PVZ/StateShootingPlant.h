@@ -1,5 +1,6 @@
 #pragma once
 #include "StateBase.h"
+#include <string>
 
 class Plant;
 
@@ -9,6 +10,8 @@ private:
 	float cooldown;
 
 public:
+	std::string GetStateName() override;
+
 	void Start(Plant* classPointer) override;
 
 	void Update(Plant* classPointer, float deltaTime) override;

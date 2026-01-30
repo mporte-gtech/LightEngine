@@ -1,6 +1,7 @@
 #pragma once
 #include "Entity.h"
 #include "StateMachine.h"
+#include <string>
 
 class Plant : public Entity
 {
@@ -32,9 +33,13 @@ public:
 	Plant(int row = 0, int magazineSize = 5, int ammos = 5, float empoweredShot = 30.f, float empoweredShotReload = 0.f);
 	~Plant();
 
+	int GetMagazineSize();
 	void SetMagazineSize(int size);
 
+	int GetAmmos();
 	void SetAmmos(int amount);
+
+	std::string GetStateName();
 
 	void Shoot();
 

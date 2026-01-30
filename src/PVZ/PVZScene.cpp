@@ -39,11 +39,7 @@ void PVZScene::OnEvent(const sf::Event& event)
 
 			if (event.mouseButton.y < laneHeight * i)
 			{
-				Zombie* temp = CreateEntity<Zombie>(50, sf::Color::Red);
-				temp->SetPosition(event.mouseButton.x, laneHeight * i - laneHeight / 2);
-				temp->SetSpeed(50);
-
-				rows[i - 1].push_back(temp);
+				SpawnZombie(i);
 
 				break;
 			}
@@ -79,6 +75,13 @@ void PVZScene::OnUpdate()
 		sf::Vector2f position = selectedPlant->GetPosition();
 		Debug::DrawCircle(position.x, position.y, 10, sf::Color::Blue);
 	}
+
+	for (Plant* plant : plants)
+	{
+		Debug::DrawText(plant->GetPosition().x, plant->GetPosition().y, std::to_string(plant->GetAmmos()) + " / " + std::to_string(plant->GetMagazineSize()), 0.5f, 0.5f, sf::Color::Blue);
+		Debug::DrawText(plant->GetPosition().x, plant->GetPosition().y + plant->GetRadius(), plant->GetStateName(), 0.5f, 0, sf::Color::Blue);
+	}
+
 }
 
 bool PVZScene::AreZombiesInRow(int rowNumber)
@@ -99,6 +102,17 @@ void PVZScene::RemovePlant(Plant* plantToRemove)
 			plant->~Plant();
 		}
 	}
+}
+
+void PVZScene::SpawnZombie(int rowNumber)
+{
+	float laneHeight = GetWindowHeight() / rowsAmount;
+
+	Zombie* temp = CreateEntity<Zombie>(50, sf::Color::Red);
+	temp->SetPosition(GetWindowWidth() + temp->GetRadius(), laneHeight * rowNumber - laneHeight / 2);
+	temp->SetSpeed(50);
+
+	rows[rowNumber - 1].push_back(temp);
 }
 
 void PVZScene::RemoveZombie(Zombie* zombieToRemove)

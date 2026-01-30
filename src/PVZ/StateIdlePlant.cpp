@@ -1,6 +1,11 @@
 #include "StateIdlePlant.h"
 #include "Plant.h"
 
+std::string StateIdlePlant::GetStateName()
+{
+	return "Idle";
+}
+
 void StateIdlePlant::Start(Plant* classPointer)
 {
 }
